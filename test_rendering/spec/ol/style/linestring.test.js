@@ -86,7 +86,7 @@ describe('ol.rendering.style.LineString', function() {
       createFeatures();
       expectResemble(
           map, 'spec/ol/style/expected/linestring-strokes-canvas.png',
-          3.0, done);
+          IMAGE_TOLERANCE, done);
     });
   });
 });

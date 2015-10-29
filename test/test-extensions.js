@@ -10,9 +10,9 @@
   var showDiff = (global.location.search.indexOf('showdiff') >= 0);
 
   /**
-   * The default tolerance for image comparisons.
+   * The default tolerance in percent for image comparisons.
    */
-  global.IMAGE_TOLERANCE = 1.5;
+  global.IMAGE_TOLERANCE = 6;
 
   function afterLoad(type, path, next) {
     var client = new XMLHttpRequest();
