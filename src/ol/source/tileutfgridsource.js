@@ -2,8 +2,8 @@ goog.provide('ol.source.TileUTFGrid');
 
 goog.require('goog.asserts');
 goog.require('goog.async.nextTick');
-goog.require('goog.events');
-goog.require('goog.events.EventType');
+goog.require('ol.events');
+goog.require('ol.events.EventType');
 goog.require('goog.net.Jsonp');
 goog.require('ol.Attribution');
 goog.require('ol.Tile');
@@ -307,7 +307,7 @@ ol.source.TileUTFGridTile_.prototype.getData = function(coordinate) {
  */
 ol.source.TileUTFGridTile_.prototype.forDataAtCoordinate = function(coordinate, callback, opt_this, opt_request) {
   if (this.state == ol.TileState.IDLE && opt_request === true) {
-    goog.events.listenOnce(this, goog.events.EventType.CHANGE, function(e) {
+    ol.events.listenOnce(this, ol.events.EventType.CHANGE, function(e) {
       callback.call(opt_this, this.getData(coordinate));
     }, false, this);
     this.loadInternal_();

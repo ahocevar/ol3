@@ -5,8 +5,8 @@ goog.provide('ol.interaction.SelectFilterFunction');
 
 goog.require('goog.array');
 goog.require('goog.asserts');
-goog.require('goog.events');
-goog.require('goog.events.Event');
+goog.require('ol.events');
+goog.require('ol.events.Event');
 goog.require('goog.functions');
 goog.require('goog.object');
 goog.require('ol.CollectionEventType');
@@ -54,7 +54,7 @@ ol.interaction.SelectFilterFunction;
  * @param {ol.MapBrowserEvent} mapBrowserEvent Associated
  *     {@link ol.MapBrowserEvent}.
  * @implements {oli.SelectEvent}
- * @extends {goog.events.Event}
+ * @extends {ol.events.Event}
  * @constructor
  */
 ol.interaction.SelectEvent = function(type, selected, deselected, mapBrowserEvent) {
@@ -81,7 +81,7 @@ ol.interaction.SelectEvent = function(type, selected, deselected, mapBrowserEven
    */
   this.mapBrowserEvent = mapBrowserEvent;
 };
-goog.inherits(ol.interaction.SelectEvent, goog.events.Event);
+goog.inherits(ol.interaction.SelectEvent, ol.events.Event);
 
 
 /**
@@ -209,9 +209,9 @@ ol.interaction.Select = function(opt_options) {
   this.featureLayerAssociation_ = {};
 
   var features = this.featureOverlay_.getSource().getFeaturesCollection();
-  goog.events.listen(features, ol.CollectionEventType.ADD,
+  ol.events.listen(features, ol.CollectionEventType.ADD,
       this.addFeature_, false, this);
-  goog.events.listen(features, ol.CollectionEventType.REMOVE,
+  ol.events.listen(features, ol.CollectionEventType.REMOVE,
       this.removeFeature_, false, this);
 
 };
