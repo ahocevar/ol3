@@ -20,7 +20,6 @@ goog.require('ol.MapEventType');
 goog.require('ol.Object');
 goog.require('ol.ObjectEvent');
 goog.require('ol.ObjectEventType');
-goog.require('ol.Pixel');
 goog.require('ol.RendererType');
 goog.require('ol.TileQueue');
 goog.require('ol.View');
@@ -103,6 +102,23 @@ ol.MapProperty = {
   TARGET: 'target',
   VIEW: 'view'
 };
+
+
+/**
+ * @typedef {function(ol.Map, ?olx.FrameState): boolean}
+ */
+ol.PostRenderFunction;
+
+
+/**
+ * Function to perform manipulations before rendering. This function is called
+ * with the {@link ol.Map} as first and an optional {@link olx.FrameState} as
+ * second argument. Return `true` to keep this function for the next frame,
+ * `false` to remove it.
+ * @typedef {function(ol.Map, ?olx.FrameState): boolean}
+ * @api
+ */
+ol.PreRenderFunction;
 
 
 /**

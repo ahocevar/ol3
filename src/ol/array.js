@@ -4,6 +4,23 @@ goog.require('goog.asserts');
 
 
 /**
+ * An array with two elements, representing a pixel. The first element is the
+ * x-coordinate, the second the y-coordinate of the pixel.
+ * @typedef {Array.<number>}
+ * @api stable
+ */
+ol.Pixel;
+
+
+/**
+ * An array of numbers representing pixel values.
+ * @typedef {Array.<number>} ol.RasterPixel
+ * @api
+ */
+ol.RasterPixel;
+
+
+/**
  * Performs a binary search on the provided sorted list and returns the index of the item if found. If it can't be found it'll return -1.
  * https://github.com/darkskyapp/binary-search
  *
