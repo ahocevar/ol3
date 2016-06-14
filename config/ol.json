@@ -31,7 +31,7 @@
     "compilation_level": "ADVANCED",
     "warning_level": "VERBOSE",
     "use_types_for_optimization": true,
-    "manage_closure_dependencies": true,
+    "dependency_mode": "LOOSE",
     "create_source_map": "build/ol.js.map",
     "source_map_format": "V3"
   }

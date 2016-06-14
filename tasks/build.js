@@ -156,6 +156,7 @@ function getDependencies(config, exports, callback) {
         return;
       }
       paths.push(exportsPath);
+      paths.push('src/ol/typedefs.js');
       callback(null, paths);
     });
   });
