@@ -14,7 +14,7 @@ Once installed, it will allow to write OpenLayers applications using code simila
 var OLMap = require('ol/Map');
 var View = require('ol/View');
 var TileLayer = require('ol/layer/Tile');
-var osm = new require('ol.source.OSM')();
+var osm = new require('ol/source/OSM')();
 
 var map = new OLMap({
   target: 'map',

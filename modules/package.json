@@ -1,6 +1,6 @@
 {
   "name": "ol",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "CommonJS-friendly set of OpenLayers modules",
   "main": "index.js",
   "repository": {
