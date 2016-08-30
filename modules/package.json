@@ -1,0 +1,11 @@
+{
+  "name": "ol",
+  "version": "0.0.0",
+  "description": "CommonJS-friendly set of OpenLayers modules",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/openlayers/ol3.git"
+  },
+  "license": "BSD-2-Clause"
+}
