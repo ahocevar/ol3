@@ -326,15 +326,24 @@ ol.renderer.canvas.TileLayer.prototype.renderTileImages = function(context, fram
     // Calculate tile width and height by a tile size factor from the highest
     // resolution tile size to avoid gaps when combining tiles from different
     // resolutions
-    var resolutionFactor = tileGrid.getResolution(currentZ) / maxZResolution;
+    var currentResolution = tileGrid.getResolution(currentZ);
+    var resolutionFactor = currentResolution / maxZResolution;
     var tileSizeFactorW = tileSize[0] / maxZTileSize[0] * resolutionFactor;
     var tileSizeFactorH = tileSize[1] / maxZTileSize[1] * resolutionFactor;
-    var w = Math.round(maxZTileSize[0] / resolution * maxZResolution * pixelRatio * drawScale) * tileSizeFactorW;
-    var h = Math.round(maxZTileSize[1] / resolution * maxZResolution * pixelRatio * drawScale) * tileSizeFactorH;
+    var tileSizeW = maxZTileSize[0] / resolution * maxZResolution * pixelRatio * drawScale;
+    var tileSizeH = maxZTileSize[1] / resolution * maxZResolution * pixelRatio * drawScale;
+    var tileSizeWRounded = Math.round(tileSizeW);
+    var tileSizeHRounded = Math.round(tileSizeH);
+    var w = tileSizeWRounded * tileSizeFactorW;
+    var h = tileSizeHRounded * tileSizeFactorH;
+    var tilesOffFromCenterX = Math.round((center[0] - minZOrigin[0]) / maxZResolution / tileSize[0]);
+    var tilesOffFromCenterY = Math.round((center[1] - minZOrigin[1]) / maxZResolution / tileSize[1]);
+    var errorX = Math.round((tileSizeW - tileSizeWRounded) * tileSizeFactorW * tilesOffFromCenterX);
+    var errorY = Math.round((tileSizeH - tileSizeHRounded) * tileSizeFactorH * tilesOffFromCenterY);
     var left = (tileCoord[1] - originTileCoord[1]) * w +
-        offsetX + Math.round((origin[0] - center[0]) * pixelScale);
+        offsetX + Math.round((origin[0] - center[0]) * pixelScale) + errorX;
     var top = (originTileCoord[2] - tileCoord[2] - 1) * h +
-        offsetY + Math.round((center[1] - origin[1]) * pixelScale);
+        offsetY + Math.round((center[1] - origin[1]) * pixelScale) - errorY;
     if (!opaque) {
       var pixelExtent = [left, top, left + w, top + h];
       // Create a clip mask for regions in this low resolution tile that are
